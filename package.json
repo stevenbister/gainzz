@@ -5,7 +5,8 @@
 	"scripts": {
 		"dev": "vite dev --host",
 		"build": "vite build",
-		"preview": "wrangler pages dev .svelte-kit/cloudflare",
+		"preview": "vite preview",
+		"preview:cf": "wrangler pages dev .svelte-kit/cloudflare",
 		"test": "playwright test",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
