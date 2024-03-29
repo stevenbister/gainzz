@@ -26,6 +26,9 @@ jobs:
 
       - name: 👀 Typecheck
         run: npm run check
+        env:
+          PUBLIC_SUPABASE_ANON_KEY = ${{ secrets.PUBLIC_SUPABASE_ANON_KEY }}
+          PUBLIC_SUPABASE_URL = ${{ secrets.PUBLIC_SUPABASE_URL }}
 
       - name: 🎭 Install Playwright Browsers
         run: npx playwright install --with-deps
