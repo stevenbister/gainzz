@@ -8,10 +8,15 @@
 		"preview": "vite preview",
 		"preview:cf": "wrangler pages dev .svelte-kit/cloudflare",
 		"test": "playwright test",
+		"typegen": "npx supabase gen types typescript --local > types/supabase.ts",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --check . && eslint .",
 		"format": "prettier --write ."
+	},
+	"dependencies": {
+		"@supabase/ssr": "^0.1.0",
+		"@supabase/supabase-js": "^2.41.1"
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.28.1",

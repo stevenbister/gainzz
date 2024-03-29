@@ -26,12 +26,18 @@ jobs:
 
       - name: 👀 Typecheck
         run: npm run check
+        env:
+          PUBLIC_SUPABASE_ANON_KEY: ${{ vars.PUBLIC_SUPABASE_ANON_KEY }}
+          PUBLIC_SUPABASE_URL: ${{ vars.PUBLIC_SUPABASE_URL }}
 
       - name: 🎭 Install Playwright Browsers
         run: npx playwright install --with-deps
 
       - name: 🎭 Run Playwright tests
         run: npx playwright test
+        env:
+          PUBLIC_SUPABASE_ANON_KEY: ${{ vars.PUBLIC_SUPABASE_ANON_KEY }}
+          PUBLIC_SUPABASE_URL: ${{ vars.PUBLIC_SUPABASE_URL }}
       - uses: actions/upload-artifact@v4
         if: always()
         with:
