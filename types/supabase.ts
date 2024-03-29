@@ -34,6 +34,24 @@ export type Database = {
   }
   public: {
     Tables: {
+      role: {
+        Row: {
+          created_at: string | null
+          id: number
+          role_name: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          id?: never
+          role_name?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          id?: never
+          role_name?: string | null
+        }
+        Relationships: []
+      }
       user_profile: {
         Row: {
           created_at: string | null
@@ -59,6 +77,42 @@ export type Database = {
         Relationships: [
           {
             foreignKeyName: "user_profile_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      user_role: {
+        Row: {
+          created_at: string | null
+          id: number
+          role_id: number | null
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          id?: never
+          role_id?: number | null
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          id?: never
+          role_id?: number | null
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "user_role_role_id_fkey"
+            columns: ["role_id"]
+            isOneToOne: false
+            referencedRelation: "role"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "user_role_user_id_fkey"
             columns: ["user_id"]
             isOneToOne: false
             referencedRelation: "users"
