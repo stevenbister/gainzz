@@ -41,6 +41,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 	};
 
 	return resolve(event, {
+		// Note that we are specifying filterSerializedResponseHeaders here. We need to tell SvelteKit that supabase needs the content-range header.
 		filterSerializedResponseHeaders(name) {
 			return name === 'content-range';
 		},

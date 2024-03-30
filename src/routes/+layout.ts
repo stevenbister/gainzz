@@ -3,6 +3,7 @@ import { createBrowserClient, isBrowser, parse } from '@supabase/ssr';
 import type { Database } from '~/types/supabase';
 import type { LayoutLoad } from './$types';
 
+// Handles the session and the supabase object on the client-side.
 export const load: LayoutLoad = async ({ fetch, data, depends }) => {
 	depends('supabase:auth');
 
