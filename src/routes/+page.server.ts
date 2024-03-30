@@ -1,4 +1,3 @@
-import { getUser } from '$lib/utils';
 import { redirect } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 
@@ -9,13 +8,11 @@ export const load: PageServerLoad = async ({ locals: { supabase, getSession } })
 		throw redirect(303, '/login');
 	}
 
-	const user = await getUser(supabase);
-
 	// Test data is getting returned
 	const { data: profile } = await supabase
 		.from('user_profile')
 		.select('*')
-		.eq('user_id', user.id)
+		.eq('user_id', session.id)
 		.single();
 
 	return { profile };

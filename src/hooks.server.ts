@@ -34,9 +34,19 @@ export const handle: Handle = async ({ event, resolve }) => {
 	 * You should never trust the unencoded session data if you're writing server code, since it could be tampered with by the sender. If you need verified, trustworthy user data, call auth.getUser instead, which always makes a request to the Auth server to fetch trusted data.
 	 */
 	event.locals.getSession = async () => {
+		let session = null;
+
 		const {
-			data: { session },
-		} = await event.locals.supabase.auth.getSession();
+			data: { user },
+			error: userError,
+		} = await event.locals.supabase.auth.getUser();
+
+		if (userError) {
+			session = null;
+		}
+
+		session = user;
+
 		return session;
 	};
 

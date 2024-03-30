@@ -2,7 +2,9 @@ import type { LayoutServerLoad } from './$types';
 
 // Make the session available across the UI, including pages and layouts
 export const load: LayoutServerLoad = async ({ locals: { getSession } }) => {
+	const session = await getSession();
+
 	return {
-		session: await getSession(),
+		session,
 	};
 };
