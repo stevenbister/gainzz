@@ -9,6 +9,24 @@ export const handle: Handle = async ({ event, resolve }) => {
 		PUBLIC_SUPABASE_URL,
 		PUBLIC_SUPABASE_ANON_KEY,
 		{
+			global: {
+				fetch: (...args) => {
+					//// TEMP
+					// https://github.com/cloudflare/workerd/issues/698
+					if (args[1]?.cache) {
+						delete args[1].cache;
+
+						if (!args[1]?.headers) args[1].headers = {};
+
+						// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+						// @ts-ignore
+						args[1].headers['Cache-Control'] = 'no-store';
+					}
+					////
+
+					return fetch(...args);
+				},
+			},
 			cookies: {
 				get: (key) => event.cookies.get(key),
 				/**
@@ -18,10 +36,20 @@ export const handle: Handle = async ({ event, resolve }) => {
 				 * will replicate previous/standard behaviour (https://kit.svelte.dev/docs/types#public-types-cookies)
 				 */
 				set: (key, value, options) => {
-					event.cookies.set(key, value, { ...options, path: '/' });
+					event.cookies.set(key, value, {
+						...options,
+						secure: true,
+						httpOnly: true,
+						path: '/',
+					});
 				},
 				remove: (key, options) => {
-					event.cookies.delete(key, { ...options, path: '/' });
+					event.cookies.delete(key, {
+						...options,
+						secure: true,
+						httpOnly: true,
+						path: '/',
+					});
 				},
 			},
 		}
