@@ -39,8 +39,8 @@ export const actions = {
 };
 
 // If the user is already logged in return him to the home page
-export const load: PageServerLoad = async ({ locals: { getSession } }) => {
-	const session = await getSession();
+export const load: PageServerLoad = async ({ locals: { safeGetSession } }) => {
+	const { session } = await safeGetSession();
 
 	if (session) {
 		redirect(303, '/');

@@ -33,21 +33,19 @@ export const handle: Handle = async ({ event, resolve }) => {
 	 * Note that auth.getSession reads the auth token and the unencoded session data from the local storage medium. It doesn't send a request back to the Supabase Auth server unless the local session is expired.
 	 * You should never trust the unencoded session data if you're writing server code, since it could be tampered with by the sender. If you need verified, trustworthy user data, call auth.getUser instead, which always makes a request to the Auth server to fetch trusted data.
 	 */
-	event.locals.getSession = async () => {
-		let session = null;
-
+	event.locals.safeGetSession = async () => {
 		const {
 			data: { user },
-			error: userError,
+			error,
 		} = await event.locals.supabase.auth.getUser();
-
-		if (userError) {
-			session = null;
+		if (error) {
+			return { session: null, user: null };
 		}
 
-		session = user;
-
-		return session;
+		const {
+			data: { session },
+		} = await event.locals.supabase.auth.getSession();
+		return { session, user };
 	};
 
 	return resolve(event, {
