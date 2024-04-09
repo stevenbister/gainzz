@@ -1,6 +1,7 @@
 import { PUBLIC_SUPABASE_ANON_KEY, PUBLIC_SUPABASE_URL } from '$env/static/public';
 import { createBrowserClient, isBrowser, parse } from '@supabase/ssr';
 import type { Database } from '~/types/supabase';
+import '../styles/app.scss';
 import type { LayoutLoad } from './$types';
 
 // Handles the session and the supabase object on the client-side.
