@@ -1,0 +1,66 @@
+@font-face {
+	font-family: Inter;
+	font-style: normal;
+	font-weight: 100 900;
+	src: url('../fonts/Inter-VariableFont_slnt\,wght.woff2') format('woff2-variations');
+	font-display: swap;
+}
+
+:root {
+	/* -------------------------------------------------------------------------------------------------
+    * Colors
+    * -----------------------------------------------------------------------------------------------*/
+	--color-dark-1: hsl(0deg 0% 26%);
+	--color-dark-2: hsl(0deg 0% 16%);
+	--color-dark-3: hsl(0deg 0% 1%);
+	--color-light-1: hsl(0deg 0% 97%);
+	--color-success: hsl(155deg 54% 45%);
+	--color-success-0-5: hsl(155deg 54% 45% / 50%);
+	--color-error: hsl(0deg 54% 45%);
+	--color-error-0-5: hsl(0deg 54% 45% / 50%);
+	--gradient-primary: linear-gradient(90deg, var(--color-dark-3) 0%, var(--color-dark-1) 100%);
+
+	--color-global-text: var(--color-light-1);
+	--color-global-bg: var(--color-dark-3);
+
+	/* -------------------------------------------------------------------------------------------------
+    * Spacing
+	* @link https://utopia.fyi/space/calculator?c=320,16,1.2,1240,20,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12
+    * -----------------------------------------------------------------------------------------------*/
+	--space--3: clamp(4px, 3.6522px + 0.1087cqi, 5px);
+	--space--2: clamp(8px, 7.3043px + 0.2174cqi, 10px);
+	--space--1: clamp(12px, 10.9565px + 0.3261cqi, 15px);
+	--space-0: clamp(16px, 14.6087px + 0.4348cqi, 20px);
+	--space-1: clamp(24px, 21.913px + 0.6522cqi, 30px);
+	--space-2: clamp(32px, 29.2174px + 0.8696cqi, 40px);
+	--space-3: clamp(48px, 43.8261px + 1.3043cqi, 60px);
+	--space-4: clamp(64px, 58.4348px + 1.7391cqi, 80px);
+	--space-5: clamp(96px, 87.6522px + 2.6087cqi, 120px);
+
+	/* -------------------------------------------------------------------------------------------------
+    * Typography
+	* @link https://utopia.fyi/type/calculator?c=320,16,1.2,1240,20,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12
+    * -----------------------------------------------------------------------------------------------*/
+	--font-primary: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell,
+		Noto Sans, sans-serif;
+	--fw-1: 100;
+	--fw-2: 200;
+	--fw-3: 300;
+	--fw-4: 400;
+	--fw-5: 500;
+	--fw-6: 600;
+	--fw-7: 700;
+	--fw-8: 800;
+	--fw-9: 900;
+	--fs--2: clamp(0.6944rem, 0.6577rem + 0.1836cqi, 0.8rem);
+	--fs--1: clamp(0.8333rem, 0.7754rem + 0.2899cqi, 1rem);
+	--fs-0: clamp(1rem, 0.913rem + 0.4348cqi, 1.25rem);
+	--fs-1: clamp(1.2rem, 1.0739rem + 0.6304cqi, 1.5625rem);
+	--fs-2: clamp(1.44rem, 1.2615rem + 0.8924cqi, 1.9531rem);
+	--fs-3: clamp(1.728rem, 1.4799rem + 1.2407cqi, 2.4414rem);
+	--fs-4: clamp(2.0736rem, 1.7334rem + 1.7011cqi, 3.0518rem);
+	--fs-5: clamp(2.4883rem, 2.027rem + 2.3067cqi, 3.8147rem);
+	--lh-1: 1.25;
+	--lh-2: 1.5;
+	--lh-3: 1.75;
+}

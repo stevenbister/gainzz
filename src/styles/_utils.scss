@@ -1,0 +1,127 @@
+@use 'sass:map';
+
+// Map values to css properties
+@function map-properties($start, $end, $property) {
+	$map: ();
+
+	@for $i from $start through $end {
+		$map: map.set($map, #{$i}, var(--#{$property}-#{$i}));
+	}
+
+	@return $map;
+}
+
+$config: (
+	margin: (
+		prefix: 'm',
+		values: map-properties(-3, 5, space),
+	),
+	margin-block: (
+		prefix: 'my',
+		values: map-properties(-3, 5, space),
+	),
+	margin-inline: (
+		prefix: 'mx',
+		values: map-properties(-3, 5, space),
+	),
+	margin-block-start: (
+		prefix: 'mt',
+		values: map-properties(-3, 5, space),
+	),
+	margin-block-end: (
+		prefix: 'mb',
+		values: map-properties(-3, 5, space),
+	),
+	margin-inline-start: (
+		prefix: 'ml',
+		values: map-properties(-3, 5, space),
+	),
+	margin-inline-end: (
+		prefix: 'mr',
+		values: map-properties(-3, 5, space),
+	),
+	padding: (
+		prefix: 'p',
+		values: map-properties(-3, 5, space),
+	),
+	padding-block: (
+		prefix: 'py',
+		values: map-properties(-3, 5, space),
+	),
+	padding-inline: (
+		prefix: 'px',
+		values: map-properties(-3, 5, space),
+	),
+	padding-block-start: (
+		prefix: 'pt',
+		values: map-properties(-3, 5, space),
+	),
+	padding-block-end: (
+		prefix: 'pb',
+		values: map-properties(-3, 5, space),
+	),
+	padding-inline-start: (
+		prefix: 'pl',
+		values: map-properties(-3, 5, space),
+	),
+	padding-inline-end: (
+		prefix: 'pr',
+		values: map-properties(-3, 5, space),
+	),
+	font-size: (
+		prefix: 'fs',
+		values: map-properties(-2, 1, fs),
+	),
+	font-weight: (
+		prefix: 'fw',
+		values: map-properties(1, 9, fw),
+	),
+	line-height: (
+		prefix: 'lh',
+		values: map-properties(1, 2, lh),
+	),
+	color: (
+		prefix: 'color',
+		values: (
+			dark-1: var(--color-dark-1),
+			dark-2: var(--color-dark-2),
+			dark-3: var(--color-dark-3),
+			light-1: var(--color-light-1),
+			success: var(--color-success),
+			success-0-5: var(--color-success-0-5),
+			error: var(--color-error),
+			error-0-5: var(--color-error-0-5),
+		),
+	),
+	background: (
+		prefix: 'gradient',
+		values: (
+			primary: var(--gradient-primary),
+		),
+	),
+);
+
+@each $property, $values in $config {
+	$prefix: map.get($values, prefix);
+	$values: map.get($values, values);
+
+	@each $key, $value in $values {
+		.#{$prefix}-#{$key} {
+			@if ($value) {
+				#{$property}: $value;
+			} @else {
+				#{$property}: $key;
+			}
+		}
+	}
+}
+
+.sr-only:not(:focus):not(:active) {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	white-space: nowrap;
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+}
