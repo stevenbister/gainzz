@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
+	import Input from '$lib/components/Input.svelte';
 	import type { ActionData } from './$types';
 
 	export let form: ActionData;
@@ -8,10 +9,8 @@
 <h1>Login</h1>
 
 <form method="post" use:enhance>
-	<label
-		>email
-		<input name="email" value={form?.email ?? ''} required />
-	</label>
+	<Input label="Email" name="email" value={form?.email ?? ''} required />
+
 	<label
 		>password
 		<input type="password" name="password" required />
