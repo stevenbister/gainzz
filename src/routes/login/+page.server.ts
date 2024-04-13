@@ -9,20 +9,25 @@ export const actions = {
 		const email = formData.get('email');
 		if (!validateEmail(email)) {
 			return fail(400, {
-				error: 'Invalid email',
 				email: email,
-				success: false,
-				message: 'Invalid email address',
+				field: {
+					name: 'email',
+					error: 'Invalid email',
+					message: 'Invalid email address',
+				},
 			});
 		}
 
 		const password = formData.get('password');
 		if (!validatePassword(password)) {
 			return fail(400, {
-				error: 'Invalid password',
 				email: email,
-				success: false,
-				message: 'Invalid password',
+				field: {
+					name: 'password',
+					error: 'Invalid password',
+					message: 'Invalid password, must be at least 8 characters long',
+					field: 'password',
+				},
 			});
 		}
 
