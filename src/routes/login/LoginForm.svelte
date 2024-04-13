@@ -47,3 +47,11 @@
 
 	<Button>Log in</Button>
 </form>
+
+<style lang="scss">
+	form {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-2);
+	}
+</style>
