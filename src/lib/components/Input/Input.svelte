@@ -22,13 +22,15 @@
 	export let validationMessage: string = '';
 </script>
 
-<div class="input" class:invalid={state === 'invalid'}>
-	<label for={id}>{label}</label>
-	<input {id} {type} {...$$restProps} />
+<div>
+	<div class="input" class:invalid={state === 'invalid'}>
+		<label for={id}>{label}</label>
+		<input {id} {type} {...$$restProps} />
+	</div>
+	{#if validationMessage}
+		<div class="validation-message">{validationMessage}</div>
+	{/if}
 </div>
-{#if validationMessage}
-	<div class="validation-message">{validationMessage}</div>
-{/if}
 
 <style lang="scss">
 	@layer components {

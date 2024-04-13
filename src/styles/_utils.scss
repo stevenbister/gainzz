@@ -70,7 +70,7 @@ $config: (
 	),
 	font-size: (
 		prefix: 'fs',
-		values: map-properties(-2, 1, fs),
+		values: map-properties(-2, 5, fs),
 	),
 	font-weight: (
 		prefix: 'fw',
