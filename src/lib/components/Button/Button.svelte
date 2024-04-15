@@ -37,7 +37,7 @@
 <style lang="scss">
 	@layer components {
 		.btn {
-			--_btn-color-bg: var(--color-dark-2);
+			--_btn-color-bg: var(--color-dark-3);
 			--_btn-color-fg: var(--color-light-1);
 			--_btn-gap-s: var(--space--2);
 			--_btn-gap-m: var(--space-2);
@@ -65,7 +65,7 @@
 
 			&:hover,
 			&:active {
-				--_btn-color-bg: var(--color-dark-1);
+				--_btn-color-bg: var(--color-dark-2);
 			}
 
 			&[disabled] {
@@ -105,7 +105,7 @@
 				&:hover,
 				&:active {
 					--_btn-color-bg: var(--color-light-1);
-					--_btn-color-fg: var(--color-dark-2);
+					--_btn-color-fg: var(--color-dark-3);
 				}
 			}
 		}

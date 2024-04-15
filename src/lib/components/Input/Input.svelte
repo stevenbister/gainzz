@@ -35,8 +35,8 @@
 <style lang="scss">
 	@layer components {
 		.input {
-			--_input-border: var(--color-dark-1);
-			--_input-bg: var(--color-dark-2-5);
+			--_input-border: var(--color-dark-2);
+			--_input-bg: var(--color-dark-3-5);
 			--_input-radius: var(--radius-global);
 			--_input-gap: var(--space--2);
 
@@ -50,7 +50,7 @@
 
 			&:has(input:focus-within),
 			&:has(input:active) {
-				--_input-bg: var(--color-dark-1-5);
+				--_input-bg: var(--color-dark-2-5);
 			}
 		}
 
