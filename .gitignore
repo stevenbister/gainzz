@@ -11,3 +11,4 @@ vite.config.ts.timestamp-*
 .wrangler
 test-results
 *storybook.log
+spritesheet.svg
