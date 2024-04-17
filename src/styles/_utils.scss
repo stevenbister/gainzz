@@ -116,8 +116,6 @@ $config: (
 	$values: map.get($values, values);
 
 	@each $key, $value in $values {
-		@debug #{$prefix}-#{$key};
-
 		.#{$prefix}-#{$key} {
 			@if ($value) {
 				#{$property}: $value;

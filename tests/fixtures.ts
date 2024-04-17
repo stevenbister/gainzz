@@ -38,7 +38,7 @@ export const test = baseTest.extend<object, { workerStorageState: string }>({
 			//
 			// Sometimes login flow sets cookies in the process of several redirects.
 			// Wait for the final URL to ensure that the cookies are actually set.
-			await page.waitForURL('http://localhost:4173/');
+			await page.waitForURL('http://localhost:4173/workouts');
 
 			// End of authentication steps.
 
