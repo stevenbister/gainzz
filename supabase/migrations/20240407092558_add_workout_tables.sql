@@ -47,9 +47,17 @@ create table workout_day (
 
 create table workout_cycle (
     id bigint primary key generated always as identity,
+    created_by uuid references auth.users,
+    key integer not null,
+    created_at timestamptz default now(),
+    updated_at timestamptz default now()
+);
+
+create table workout_cycle_week (
+    id bigint primary key generated always as identity,
+    workout_cycle_id bigint references public.workout_cycle,
     workout_week_id bigint references public.workout_week,
     created_by uuid references auth.users,
-    cycle integer not null,
     created_at timestamptz default now(),
     updated_at timestamptz default now()
 );
