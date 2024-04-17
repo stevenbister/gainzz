@@ -1,0 +1,3 @@
+<section class="pt-4">
+	<slot />
+</section>

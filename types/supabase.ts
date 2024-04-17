@@ -191,26 +191,23 @@ export type Database = {
         Row: {
           created_at: string | null
           created_by: string | null
-          cycle: number
           id: number
+          key: number
           updated_at: string | null
-          workout_week_id: number | null
         }
         Insert: {
           created_at?: string | null
           created_by?: string | null
-          cycle: number
           id?: never
+          key: number
           updated_at?: string | null
-          workout_week_id?: number | null
         }
         Update: {
           created_at?: string | null
           created_by?: string | null
-          cycle?: number
           id?: never
+          key?: number
           updated_at?: string | null
-          workout_week_id?: number | null
         }
         Relationships: [
           {
@@ -220,8 +217,50 @@ export type Database = {
             referencedRelation: "users"
             referencedColumns: ["id"]
           },
+        ]
+      }
+      workout_cycle_week: {
+        Row: {
+          created_at: string | null
+          created_by: string | null
+          id: number
+          updated_at: string | null
+          workout_cycle_id: number | null
+          workout_week_id: number | null
+        }
+        Insert: {
+          created_at?: string | null
+          created_by?: string | null
+          id?: never
+          updated_at?: string | null
+          workout_cycle_id?: number | null
+          workout_week_id?: number | null
+        }
+        Update: {
+          created_at?: string | null
+          created_by?: string | null
+          id?: never
+          updated_at?: string | null
+          workout_cycle_id?: number | null
+          workout_week_id?: number | null
+        }
+        Relationships: [
           {
-            foreignKeyName: "workout_cycle_workout_week_id_fkey"
+            foreignKeyName: "workout_cycle_week_created_by_fkey"
+            columns: ["created_by"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "workout_cycle_week_workout_cycle_id_fkey"
+            columns: ["workout_cycle_id"]
+            isOneToOne: false
+            referencedRelation: "workout_cycle"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "workout_cycle_week_workout_week_id_fkey"
             columns: ["workout_week_id"]
             isOneToOne: false
             referencedRelation: "workout_week"

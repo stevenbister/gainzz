@@ -214,15 +214,26 @@ insert into workout_day (
 );
 
 insert into workout_cycle (
-    workout_week_id,
     created_by,
-    cycle
+    key
 ) values (
-    (select id from workout_week where week = 1),
     (select id from auth.users where instance_id = '00000000-0000-0000-0000-000000000000'),
     1
 ), (
-    (select id from workout_week where week = 2),
     (select id from auth.users where instance_id = '00000000-0000-0000-0000-000000000000'),
-    1
+    2
+);
+
+insert into workout_cycle_week (
+    workout_cycle_id,
+    workout_week_id,
+    created_by
+) values (
+    (select id from workout_cycle where key = 1),
+    (select id from workout_week where week = 1),
+    (select id from auth.users where instance_id = '00000000-0000-0000-0000-000000000000')
+), (
+    (select id from workout_cycle where key = 1),
+    (select id from workout_week where week = 2),
+    (select id from auth.users where instance_id = '00000000-0000-0000-0000-000000000000')
 );
