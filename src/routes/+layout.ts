@@ -2,10 +2,9 @@ import { PUBLIC_SUPABASE_ANON_KEY, PUBLIC_SUPABASE_URL } from '$env/static/publi
 import { createBrowserClient, isBrowser, parse } from '@supabase/ssr';
 import type { Database } from '~/types/supabase';
 import '../styles/app.scss';
-import type { LayoutLoad } from './$types';
 
 // Handles the session and the supabase object on the client-side.
-export const load: LayoutLoad = async ({ fetch, data, depends }) => {
+export const load = async ({ fetch, data, depends }) => {
 	depends('supabase:auth');
 
 	const supabase = createBrowserClient<Database>(PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY, {
