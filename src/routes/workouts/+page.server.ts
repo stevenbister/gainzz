@@ -1,16 +1,11 @@
+import { getUserFromLocals } from '$lib/utils';
 import { error as kitError } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 
-export const load: PageServerLoad = async ({ locals: { supabase, safeGetSession } }) => {
-	const { user } = await safeGetSession();
+export const load: PageServerLoad = async ({ locals }) => {
+	const user = await getUserFromLocals(locals);
 
-	if (!user) {
-		throw kitError(401, {
-			message: 'Unauthorized',
-		});
-	}
-
-	const { data: workouts, error } = await supabase
+	const { data: workouts, error } = await locals.supabase
 		.from('workout_cycle')
 		.select('id, key')
 		.eq('created_by', user.id);
