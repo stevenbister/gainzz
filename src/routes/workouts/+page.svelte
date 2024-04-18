@@ -13,11 +13,16 @@
 
 {#if data}
 	<CardList class="mt-3">
-		{#each data.workouts as workout}
-			<SimpleCard
-				title={`Cycle #${padNumber(workout.key)}`}
-				href={`/workouts/${workout.id}`}
-			/>
-		{/each}
+		{#await data.workouts}
+			<!-- TODO: Need some nice skeleton or something -->
+			<p>...loading...</p>
+		{:then workouts}
+			{#each workouts as workout}
+				<SimpleCard
+					title={`Cycle #${padNumber(workout.key)}`}
+					href={`/workouts/${workout.id}`}
+				/>
+			{/each}
+		{/await}
 	</CardList>
 {/if}
