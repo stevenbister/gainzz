@@ -9,7 +9,7 @@
 
 	if (blockLink) {
 		onMount(() => {
-			const a = document.querySelector('a');
+			const a = card.querySelector('a');
 			if (!a) return;
 
 			// Prevent event bubbling when clicking directly on the button element.
