@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Card from '$lib/components/Card/Card.svelte';
 	import CardList from '$lib/components/Card/CardList.svelte';
 	import SimpleCard from '$lib/components/Card/SimpleCard.svelte';
 	import Heading from '$lib/components/Heading/Heading.svelte';
@@ -14,10 +15,12 @@
 {#if data}
 	<CardList class="mt-3">
 		{#await data.workouts}
-			<!-- TODO: Need some nice skeleton or something -->
-			<p>...loading...</p>
+			<!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
+			{#each Array(5) as _, index (index)}
+				<Card skeleton style="height: 54px;" />
+			{/each}
 		{:then workouts}
-			{#each workouts as workout}
+			{#each workouts as workout (workout.id)}
 				<SimpleCard
 					title={`Cycle #${padNumber(workout.key)}`}
 					href={`/workouts/${workout.id}`}
