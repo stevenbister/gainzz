@@ -40,3 +40,7 @@
 		</a>
 	</Card>
 </Story>
+
+<Story name="Skeleton">
+	<Card skeleton />
+</Story>
