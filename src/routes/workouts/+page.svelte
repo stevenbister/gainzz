@@ -20,6 +20,10 @@
 				<Card skeleton style="height: 54px;" />
 			{/each}
 		{:then workouts}
+			{#if workouts.length === 0}
+				<p>No workouts found.</p>
+			{/if}
+
 			{#each workouts as workout (workout.id)}
 				<SimpleCard
 					title={`Cycle #${padNumber(workout.key)}`}
