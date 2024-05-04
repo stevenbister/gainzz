@@ -20,17 +20,28 @@ export async function getWorkoutDaysByWeekId(
 	return workoutDays;
 }
 
+type GetWorkoutsByWeekIdFn = Promise<
+	{
+		workout: {
+			id: number;
+			nickname: string | null;
+			workout_exercise: { count: number }[];
+		} | null;
+	}[]
+>;
+
 export async function getWorkoutsByWeekId(
 	locals: App.Locals,
 	{ workoutWeekId }: { workoutId: number; workoutWeekId: number }
-) {
+): GetWorkoutsByWeekIdFn {
 	const { data: workout, error: sbError } = await locals.supabase
 		.from('workout_day')
 		.select(
 			`
             workout (
                 id,
-                nickname
+                nickname,
+				workout_exercise(count)
             )
         `
 		)
@@ -44,5 +55,5 @@ export async function getWorkoutsByWeekId(
 		});
 	}
 
-	return workout;
+	return workout as unknown as GetWorkoutsByWeekIdFn;
 }
