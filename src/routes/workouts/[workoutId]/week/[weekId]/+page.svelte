@@ -1,8 +1,8 @@
 <script lang="ts">
 	import Card from '$lib/components/Card/Card.svelte';
 	import CardList from '$lib/components/Card/CardList.svelte';
+	import WorkoutDayCard from '$lib/components/Card/WorkoutDayCard.svelte';
 	import Heading from '$lib/components/Heading/Heading.svelte';
-	import Icon from '$lib/components/Icon/Icon.svelte';
 	import { padNumber } from '$lib/utils';
 	import type { PageData } from './$types';
 
@@ -16,32 +16,28 @@
 		{#await data.workoutDays}
 			<!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
 			{#each Array(5) as _, index (index)}
-				<Card skeleton />
+				<Card skeleton style="height: 112px" />
 			{/each}
 		{:then days}
 			{#if days.length === 0}
 				<p>No days found.</p>
 			{/if}
 
+			<!-- Is there a better way? -->
 			{#each days as day (day.id)}
 				{#if day.day}
-					{#await data.workouts then workouts}
+					{#await data.workouts}
+						<Card skeleton style="height: 112px" />
+					{:then workouts}
 						{#if workouts.length > 0}
 							{#each workouts as workout (workout.workout?.id)}
 								{#if workout.workout?.id === day.workout_id}
-									<Card blockLink>
-										<Heading
-											title={`Day #${padNumber(day.day)}`}
-											subTitle={workout.workout?.nickname ?? ''}
-											size="sm"
-										/>
-
-										<a
-											href={`/workouts/${data.workoutId}/week/${data.weekId}/day/${day.id}`}
-										>
-											<Icon sprite="arrow-right" />
-										</a>
-									</Card>
+									<WorkoutDayCard
+										title={`Day #${padNumber(day.day)}`}
+										subTitle={workout.workout?.nickname ?? ''}
+										href={`/workouts/${data.workoutId}/week/${data.weekId}/day/${day.id}`}
+										exerciseCount={workout.workout.workout_exercise[0].count}
+									/>
 								{/if}
 							{/each}
 						{/if}
