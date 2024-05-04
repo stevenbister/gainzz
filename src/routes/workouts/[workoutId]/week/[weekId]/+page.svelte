@@ -23,24 +23,25 @@
 				<p>No days found.</p>
 			{/if}
 
-			<!-- Is there a better way? -->
 			{#each days as day (day.id)}
 				{#if day.day}
 					{#await data.workouts}
 						<Card skeleton style="height: 112px" />
 					{:then workouts}
-						{#if workouts.length > 0}
-							{#each workouts as workout (workout.workout?.id)}
-								{#if workout.workout?.id === day.workout_id}
-									<WorkoutDayCard
-										title={`Day #${padNumber(day.day)}`}
-										subTitle={workout.workout?.nickname ?? ''}
-										href={`/workouts/${data.workoutId}/week/${data.weekId}/day/${day.id}`}
-										exerciseCount={workout.workout.workout_exercise[0].count}
-									/>
-								{/if}
-							{/each}
+						{#if workouts.length === 0}
+							<p>No workouts found.</p>
 						{/if}
+
+						{#each workouts as workout (workout.workout?.id)}
+							{#if workout.workout?.id === day.workout_id}
+								<WorkoutDayCard
+									title={`Day #${padNumber(day.day)}`}
+									subTitle={workout.workout?.nickname ?? ''}
+									href={`/workouts/${data.workoutId}/week/${data.weekId}/day/${day.id}`}
+									exerciseCount={workout.workout.workout_exercise[0].count}
+								/>
+							{/if}
+						{/each}
 					{/await}
 				{/if}
 			{/each}
