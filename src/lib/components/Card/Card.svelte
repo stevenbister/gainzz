@@ -47,6 +47,7 @@
 		--_card-radius: var(--radius-1);
 		--_card-gap-s: var(--space--1);
 		--_card-gap-m: var(--space-0);
+		--_card-icon-size: var(--fs-2);
 
 		display: grid;
 		grid-template-columns: 1fr auto;
@@ -76,6 +77,10 @@
 				animation: shimmer 1s ease-in-out infinite;
 				content: '';
 			}
+		}
+
+		:global(.icon) {
+			font-size: var(--_card-icon-size);
 		}
 	}
 
