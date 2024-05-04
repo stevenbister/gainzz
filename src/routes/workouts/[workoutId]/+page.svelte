@@ -9,7 +9,7 @@
 	export let data: PageData;
 </script>
 
-<Heading title={`Cycle: #${padNumber(data.workout?.key)}`} />
+<Heading title={`Cycle #${padNumber(data.workout?.key)}`} />
 
 {#if data}
 	<CardList class="mt-3">
