@@ -19,6 +19,10 @@
 				<Card skeleton style="height: 54px;" />
 			{/each}
 		{:then weeks}
+			{#if weeks.length === 0}
+				<p>No weeks found.</p>
+			{/if}
+
 			{#each weeks as week (week.workout_week?.id)}
 				{#if week.workout_week}
 					<SimpleCard
