@@ -3,7 +3,15 @@ import { error } from '@sveltejs/kit';
 export async function getWorkoutDayById(locals: App.Locals, { workoutId }: { workoutId: number }) {
 	const { data: workoutDay, error: sbError } = await locals.supabase
 		.from('workout_day')
-		.select('id, day')
+		.select(
+			`
+			id,
+			day,
+			workout (
+				nickname
+			)
+		`
+		)
 		.eq('id', workoutId)
 		.single();
 
