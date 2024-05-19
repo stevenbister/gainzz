@@ -1,4 +1,5 @@
 <script lang="ts">
+	import BackArrow from '$lib/components/BackArrow/BackArrow.svelte';
 	import Card from '$lib/components/Card/Card.svelte';
 	import CardList from '$lib/components/Card/CardList.svelte';
 	import WorkoutDayCard from '$lib/components/Card/WorkoutDayCard.svelte';
@@ -8,6 +9,8 @@
 
 	export let data: PageData;
 </script>
+
+<BackArrow />
 
 <Heading title={`Week #${padNumber(data.workoutWeek.week)}`} />
 
@@ -38,7 +41,7 @@
 									title={`Day #${padNumber(day.day)}`}
 									subTitle={workout.workout?.nickname ?? ''}
 									href={`/workouts/${data.workoutId}/week/${data.weekId}/day/${day.id}`}
-									exerciseCount={workout.workout.workout_exercise[0].count}
+									exerciseCount={day.workout_day_exercise[0].count}
 								/>
 							{/if}
 						{/each}

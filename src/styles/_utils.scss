@@ -68,6 +68,10 @@ $config: (
 		prefix: 'pr',
 		values: map-properties(-3, 5, space),
 	),
+	gap: (
+		prefix: 'gap',
+		values: map-properties(-3, 5, space),
+	),
 	font-size: (
 		prefix: 'fs',
 		values: map-properties(-2, 5, fs),
@@ -100,10 +104,20 @@ $config: (
 			primary: var(--gradient-primary),
 		),
 	),
+	display: (
+		prefix: 'd',
+		values: (
+			'flex': flex,
+			'inline-flex': inline-flex,
+			'block': block,
+			'inline-block': inline-block,
+			'none': none,
+		),
+	),
 	align-self: (
 		prefix: 'self',
 		values: (
-			'auto': auth,
+			'auto': auto,
 			'start': flex-start,
 			'end': flex-end,
 			'center': center,

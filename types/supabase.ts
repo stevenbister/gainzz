@@ -320,7 +320,7 @@ export type Database = {
           },
         ]
       }
-      workout_exercise: {
+      workout_day_exercise: {
         Row: {
           created_at: string | null
           created_by: string | null
@@ -330,7 +330,7 @@ export type Database = {
           sets: number
           updated_at: string | null
           weight: string
-          workout_id: number | null
+          workout_day_id: number | null
         }
         Insert: {
           created_at?: string | null
@@ -341,7 +341,7 @@ export type Database = {
           sets: number
           updated_at?: string | null
           weight: string
-          workout_id?: number | null
+          workout_day_id?: number | null
         }
         Update: {
           created_at?: string | null
@@ -352,28 +352,28 @@ export type Database = {
           sets?: number
           updated_at?: string | null
           weight?: string
-          workout_id?: number | null
+          workout_day_id?: number | null
         }
         Relationships: [
           {
-            foreignKeyName: "workout_exercise_created_by_fkey"
+            foreignKeyName: "workout_day_exercise_created_by_fkey"
             columns: ["created_by"]
             isOneToOne: false
             referencedRelation: "users"
             referencedColumns: ["id"]
           },
           {
-            foreignKeyName: "workout_exercise_exercise_id_fkey"
+            foreignKeyName: "workout_day_exercise_exercise_id_fkey"
             columns: ["exercise_id"]
             isOneToOne: false
             referencedRelation: "exercise"
             referencedColumns: ["id"]
           },
           {
-            foreignKeyName: "workout_exercise_workout_id_fkey"
-            columns: ["workout_id"]
+            foreignKeyName: "workout_day_exercise_workout_day_id_fkey"
+            columns: ["workout_day_id"]
             isOneToOne: false
-            referencedRelation: "workout"
+            referencedRelation: "workout_day"
             referencedColumns: ["id"]
           },
         ]
