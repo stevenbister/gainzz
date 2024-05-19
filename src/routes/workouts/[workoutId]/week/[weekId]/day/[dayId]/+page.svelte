@@ -1,4 +1,5 @@
 <script lang="ts">
+	import BackArrow from '$lib/components/BackArrow/BackArrow.svelte';
 	import Card from '$lib/components/Card/Card.svelte';
 	import CardList from '$lib/components/Card/CardList.svelte';
 	import ExerciseDayCard from '$lib/components/Card/ExerciseDayCard.svelte';
@@ -8,6 +9,8 @@
 
 	export let data: PageData;
 </script>
+
+<BackArrow />
 
 <Heading
 	title={`Day #${padNumber(data.workoutDay?.day)}`}

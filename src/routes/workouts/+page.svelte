@@ -10,7 +10,7 @@
 	export let data: PageData;
 </script>
 
-<Heading title="Workouts" />
+<Heading title="Workouts" class="pt-3" />
 
 {#if data}
 	<CardList class="mt-3">
