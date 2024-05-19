@@ -38,7 +38,7 @@
 									title={`Day #${padNumber(day.day)}`}
 									subTitle={workout.workout?.nickname ?? ''}
 									href={`/workouts/${data.workoutId}/week/${data.weekId}/day/${day.id}`}
-									exerciseCount={workout.workout.workout_exercise[0].count}
+									exerciseCount={day.workout_day_exercise[0].count}
 								/>
 							{/if}
 						{/each}

@@ -15,18 +15,6 @@ create table workout (
     updated_at timestamptz default now()
 );
 
-create table workout_exercise (
-    id bigint primary key generated always as identity,
-    workout_id bigint references public.workout,
-    exercise_id bigint references public.exercise,
-    created_by uuid references auth.users,
-    sets integer not null,
-    reps text not null,
-    weight text not null,
-    created_at timestamptz default now(),
-    updated_at timestamptz default now()
-);
-
 create table workout_week (
     id bigint primary key generated always as identity,
     week integer not null,
@@ -41,6 +29,18 @@ create table workout_day (
     workout_id bigint references public.workout,
     created_by uuid references auth.users,
     day integer not null,
+    created_at timestamptz default now(),
+    updated_at timestamptz default now()
+);
+
+create table workout_day_exercise (
+    id bigint primary key generated always as identity,
+    workout_day_id bigint references public.workout_day,
+    exercise_id bigint references public.exercise,
+    created_by uuid references auth.users,
+    sets integer not null,
+    reps text not null,
+    weight text not null,
     created_at timestamptz default now(),
     updated_at timestamptz default now()
 );

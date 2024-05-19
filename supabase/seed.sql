@@ -128,53 +128,6 @@ insert into workout (
     'Lower'
 );
 
-insert into workout_exercise (
-    workout_id,
-    exercise_id,
-    created_by,
-    sets,
-    reps,
-    weight
-) values (
-    (select id from workout where name = 'Workout A'),
-    (select id from exercise where name = 'Bench Press'),
-    (select id from auth.users where instance_id = '00000000-0000-0000-0000-000000000000'),
-    3,
-    '5',
-    '100kg'
-),
-(
-    (select id from workout where name = 'Workout A'),
-    (select id from exercise where name = 'Shoulder Press'),
-    (select id from auth.users where instance_id = '00000000-0000-0000-0000-000000000000'),
-    3,
-    '5',
-    '100kg'
-), (
-    (select id from workout where name = 'Workout A'),
-    (select id from exercise where name = 'Bent over Row'),
-    (select id from auth.users where instance_id = '00000000-0000-0000-0000-000000000000'),
-    3,
-    '5',
-    '100kg'
-),
-(
-    (select id from workout where name = 'Workout B'),
-    (select id from exercise where name = 'Squat'),
-    (select id from auth.users where instance_id = '00000000-0000-0000-0000-000000000000'),
-    3,
-    '5',
-    '100kg'
-),
-(
-    (select id from workout where name = 'Workout B'),
-    (select id from exercise where name = 'Deadlift'),
-    (select id from auth.users where instance_id = '00000000-0000-0000-0000-000000000000'),
-    3,
-    '5',
-    '100kg'
-);
-
 insert into workout_week (
     week,
     created_by
@@ -236,4 +189,52 @@ insert into workout_cycle_week (
     (select id from workout_cycle where key = 1),
     (select id from workout_week where week = 2),
     (select id from auth.users where instance_id = '00000000-0000-0000-0000-000000000000')
+);
+
+insert into workout_day_exercise (
+    workout_day_id,
+    exercise_id,
+    created_by,
+    sets,
+    reps,
+    weight
+) values (
+    (select id from workout_day where id = 1),
+    (select id from exercise where name = 'Bench Press'),
+    (select id from auth.users where instance_id = '00000000-0000-0000-0000-000000000000'),
+    3,
+    '5',
+    '100kg'
+),
+(
+    (select id from workout_day where id = 1),
+    (select id from exercise where name = 'Shoulder Press'),
+    (select id from auth.users where instance_id = '00000000-0000-0000-0000-000000000000'),
+    3,
+    '5',
+    '100kg'
+),
+(
+    (select id from workout_day where id = 1),
+    (select id from exercise where name = 'Bent over Row'),
+    (select id from auth.users where instance_id = '00000000-0000-0000-0000-000000000000'),
+    3,
+    '5',
+    '100kg'
+),
+(
+    (select id from workout_day where id = 2),
+    (select id from exercise where name = 'Squat'),
+    (select id from auth.users where instance_id = '00000000-0000-0000-0000-000000000000'),
+    3,
+    '5',
+    '100kg'
+),
+(
+    (select id from workout_day where id = 2),
+    (select id from exercise where name = 'Deadlift'),
+    (select id from auth.users where instance_id = '00000000-0000-0000-0000-000000000000'),
+    3,
+    '5',
+    '100kg'
 );
